@@ -42,7 +42,7 @@ Route::post('cliente', [ClienteController::class, 'cliente']);
 
 Route::get('celular', [ClienteController::class, 'pesquisarPorCelular']);
 
-Route::get('cliente/nome', [ClienteController::class, 'pesquisarPorNome']);
+Route::post('cliente/nome', [ClienteController::class, 'pesquisarPorNome']);
 
 Route::get('cpf', [ClienteController::class, 'pesquisarPorCpf']);
 
