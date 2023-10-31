@@ -44,6 +44,21 @@ class ServicoController extends Controller
     ]);
     }
 
+    public function pesquisarPorCpf(Request $request)
+    {   
+        $barbearialb = Servico::where('cpf', 'like', '%' . $request->cpf . '%')->get();
+        if(count($barbearialb) > 0){
+        return response()->json([
+            'status' => true,
+            'data' => $barbearialb
+        ]);
+    }
+    return response()->json([
+        'status' => true ,
+        'message' => "Não há resultados na pesquisa"
+    ]);
+    }
+
     public function pesquisarPorDescricao(Request $request)
     {
         $barbearialb = Servico::where('descricao', 'like', '%' . $request->descricao . '%')->get();

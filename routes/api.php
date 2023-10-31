@@ -27,13 +27,18 @@ Route::post('/servico', [ServicoController::class, 'barbearialb']);
 
 Route::get('descricao', [ServicoController::class, 'pesquisarPorDescricao']);
 
-Route::get('nome', [ServicoController::class, 'pesquisarPorNome']);
+Route::get('servico/nome', [ServicoController::class, 'pesquisarPorNome']);
 
 Route::delete('delete/{id}', [ServicoController::class, 'excluir']);
 
-Route::get('all', [ServicoController::class, 'retornarTodos']);
+Route::get('servico/all', [ServicoController::class, 'retornarTodos']);
 
 Route::put('update', [ServicoController::class, 'update']);
+
+Route::get('cpf', [ServicoController::class, 'pesquisaPorCpf']);
+
+
+
 
 
 
