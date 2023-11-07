@@ -87,6 +87,23 @@ class ClienteController extends Controller
         ]);
     }
 
+     // Função de pesquisa por id
+     public function pesquisarPorId($id)
+     {
+         $cliente = Cliente::find($id);
+         if ($cliente == null) {
+            return response()->json([
+                'status' => false,
+                'message' => "Usuário não encontrado"
+            ]);
+        }
+        return response()->json([
+            'status' => true,
+            'data' => $cliente
+        ]);
+     }
+ 
+
 
             // Função de pesquisa por Celular
     public function pesquisarPorCelular(Request $request)

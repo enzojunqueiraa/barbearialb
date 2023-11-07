@@ -33,11 +33,11 @@ Route::delete('delete/{id}', [ServicoController::class, 'excluir']);
 
 Route::get('servico/all', [ServicoController::class, 'retornarTodos']);
 
-Route::put('update', [ServicoController::class, 'update']);
+Route::put('servico/update', [ServicoController::class, 'update']);
 
 Route::get('cpf', [ServicoController::class, 'pesquisaPorCpf']);
 
-
+Route::get('servico/{id}', [ServicoController::class, 'pesquisarPorId']);
 
 
 
@@ -59,6 +59,8 @@ Route::get('cliente/all', [ClienteController::class, 'retornarTodos']);
 
 Route::put('cliente/update', [ClienteController::class, 'update']);
 
+Route::get('cliente/{id}', [ClienteController::class, 'pesquisarPorId']);
+
 
 
     // Rotas da página Profissional
@@ -77,3 +79,5 @@ Route::delete('profissional/delete/{id}', [ProfissionalController::class, 'exclu
 Route::get('profissional/all', [ProfissionalController::class, 'retornarTodos']);
 
 Route::put('profissional/update', [ProfissionalController::class, 'update']);
+
+Route::get('profissional/{id}', [ProfissionalController::class, 'pesquisarPorId']);

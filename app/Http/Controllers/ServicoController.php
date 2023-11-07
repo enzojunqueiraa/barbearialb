@@ -27,6 +27,21 @@ class ServicoController extends Controller
         ], 200);
     }
 
+    // Função de pesquisa por id
+    public function pesquisarPorId($id)
+    {
+        $barbearialb = Servico::find($id);
+        if ($barbearialb == null) {
+           return response()->json([
+               'status' => false,
+               'message' => "Usuário não encontrado"
+           ]);
+       }
+       return response()->json([
+           'status' => true,
+           'data' => $barbearialb
+       ]);
+    }
 
     // Função de pesquisa por Nome
     public function pesquisarPorNome(Request $request)
