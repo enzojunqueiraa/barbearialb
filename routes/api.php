@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ProfissionalController;
 use App\Http\Controllers\ServicoController;
@@ -81,3 +82,10 @@ Route::get('profissional/all', [ProfissionalController::class, 'retornarTodos'])
 Route::put('profissional/update', [ProfissionalController::class, 'update']);
 
 Route::get('profissional/{id}', [ProfissionalController::class, 'pesquisarPorId']);
+
+
+
+//Rotas da Agenda
+
+Route::post('agendaCriar', [AgendaController::class,'agendaCriar']);
+
