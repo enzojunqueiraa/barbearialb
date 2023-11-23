@@ -54,7 +54,9 @@ class AgendaFormRequest extends FormRequest
             'data_hora.date' => 'O campo aceita data somente',
            
             'tipoPagamento.max' => 'Máximo de caracteres é 20',
-            'tipoPagamento.min'=> 'Mínimo de caracteres é 3'
+            'tipoPagamento.min'=> 'Mínimo de caracteres é 3',
+
+            'valor.decimal'=> 'O campo é aceita apenas números decimais'
 
         ];
     }

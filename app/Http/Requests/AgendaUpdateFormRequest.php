@@ -25,11 +25,11 @@ class AgendaUpdateFormRequest extends FormRequest
     {
         return [
             
-            'profissional_id'=>'|exists:profissionals,id',
+            'profissional_id'=>'exists:profissionals,id',
             'cliente_id'=>'intereger',
             'servico_id'=>'intereger',
-            'data_hora'=>'|date',
-            'tipoPagamento' => '|max:20|min:3',
+            'data_hora'=>'date',
+            'tipoPagamento' => 'max:20|min:3',
             'valor' => 'decimal:2'
         
         ];

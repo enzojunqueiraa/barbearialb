@@ -13,9 +13,8 @@ class AgendaController extends Controller
 {
     public function agenda(AgendaFormRequest $request)
     {
-
+ 
         $agenda =Agenda::where('data_hora', '=', $request->data_hora)->where('profissional_id', '=', $request->profissional_id)->get();
-
         if (count($agenda) > 0){ 
             return response()->json([
                 "success" => false,
@@ -23,7 +22,6 @@ class AgendaController extends Controller
                 "data" => $agenda
             ], 200);
         } else{
-
             $agenda = Agenda::create([
                 'profissional_id' => $request->profissional_id,
                 'data_hora' => $request->data_hora
