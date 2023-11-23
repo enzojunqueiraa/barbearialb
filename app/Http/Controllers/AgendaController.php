@@ -5,24 +5,37 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AgendaFormRequest;
 use App\Models\Agenda;
 use Illuminate\Http\Request;
+use App\Http\Requests\AgendaUpdateFormRequest;
+
+
 
 class AgendaController extends Controller
 {
-    public function agendaCriar(AgendaFormRequest $request){
-        $agenda = Agenda::create([
-            'profissional_id' => $request->profissional_id,
-            'data_hora' => $request->data,
-           
+    public function agenda(AgendaFormRequest $request)
+    {
 
+        $agenda =Agenda::where('data_hora', '=', $request->data_hora)->where('profissional_id', '=', $request->profissional_id)->get();
 
-        ]);
-        return response()->json([
-            "sucess" => true,
-            "message" => "Registro Agenda",
-            "data"=> $agenda
-        ], 200);
+        if (count($agenda) > 0){ 
+            return response()->json([
+                "success" => false,
+                "message" => "Horario ja cadastrado",
+                "data" => $agenda
+            ], 200);
+        } else{
+
+            $agenda = Agenda::create([
+                'profissional_id' => $request->profissional_id,
+                'data_hora' => $request->data_hora
+            ]);
+            return response()->json([
+                "success" => true,
+                "message" => "Agendado com sucesso",
+                "data" => $agenda
+            ], 200);
+        } 
+   
     }
-
     public function excluir($id)
     {
         $agenda = Agenda::find($id);
@@ -41,7 +54,7 @@ class AgendaController extends Controller
     }
 
 
-    public function update(AgendaFormRequest  $request)
+    public function update(AgendaUpdateFormRequest $request)
     {
         $agenda = Agenda::find($request->id);
         if(!isset($agenda)){
@@ -51,17 +64,27 @@ class AgendaController extends Controller
         ]);
     }
 
-        if (isset($request->profissional)) {
-            $agenda->profissional = $request->profissional;
+        if (isset($request->profissional_id)) {
+            $agenda->profissional_id = $request->profissional_id;
         }
         if (isset($request->data)) {
-            $agenda->data = $request->data;
+            $agenda->data_hora = $request->data_hora;
         }
         $agenda->update();
 
         return response()->json([
             'status' => true,
-            'message' => 'Serviço atualizado'
+            'message' => 'Agenda atualizado'
+        ]);
+    }
+
+    public function retornarTodos()
+    {
+        $agenda = Agenda::all();
+        return response()->json([
+            'status' => true,
+            'data' => $agenda ,
+            'message' => "Pesquisa encontrada com sucesso"
         ]);
     }
 }

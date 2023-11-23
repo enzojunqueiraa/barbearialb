@@ -44,7 +44,7 @@ Route::get('servico/{id}', [ServicoController::class, 'pesquisarPorId']);
 
 
     // Rota para a página Cliente
-Route::post('cliente', [ClienteController::class, 'cliente']);
+Route::post('/cliente', [ClienteController::class, 'cliente']);
 
 Route::get('celular', [ClienteController::class, 'pesquisarPorCelular']);
 
@@ -65,7 +65,7 @@ Route::get('cliente/{id}', [ClienteController::class, 'pesquisarPorId']);
 
 
     // Rotas da página Profissional
-Route::post('profissional', [ProfissionalController::class, 'profissional']);
+Route::post('/profissional', [ProfissionalController::class, 'profissional']);
 
 Route::get('profissional/celular', [ProfissionalController::class, 'pesquisarPorCelular']);
 
@@ -87,5 +87,10 @@ Route::get('profissional/{id}', [ProfissionalController::class, 'pesquisarPorId'
 
 //Rotas da Agenda
 
-Route::post('agendaCriar', [AgendaController::class,'agendaCriar']);
+Route::post('/agenda', [AgendaController::class,'agenda']);
 
+Route::delete('agenda/delete/{id}', [AgendaController::class, 'excluir']);
+
+Route::put('agenda/update', [AgendaController::class, 'update']);
+
+Route::get('agenda/all', [AgendaController::class, 'retornarTodos']);

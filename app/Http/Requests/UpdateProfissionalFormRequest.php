@@ -37,7 +37,7 @@ class UpdateProfissionalFormRequest extends FormRequest
             'rua'=>'max:120',
             'numero'=>'max:10',
             'bairro'=>'max:100',
-            'cep'=>'max:8|min:8',
+            'cep'=>'max:9|min:8',
             'complemento'=>'max:150',
             'senha' => '',
             'salario' => 'decimal:2'
@@ -89,7 +89,7 @@ class UpdateProfissionalFormRequest extends FormRequest
             'bairro.max' =>'O campo deve conter no máximo 100 caracteres',
 
             
-            'cep.max' =>'O campo deve conter no máximo 8 caracteres',
+            'cep.max' =>'O campo deve conter no máximo 9 caracteres',
             'cep.min' =>'O campo deve conter no mínimo 8 caracteres',
 
             'complemento.max' => 'O campo deve conter no máximo 150 caracteres',

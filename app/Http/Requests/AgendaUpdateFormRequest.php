@@ -6,7 +6,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
-class AgendaFormRequest extends FormRequest
+class AgendaUpdateFormRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,10 +25,10 @@ class AgendaFormRequest extends FormRequest
     {
         return [
             
-            'profissional_id'=>'required|exists:profissionals,id',
+            'profissional_id'=>'|exists:profissionals,id',
             'cliente_id'=>'intereger',
             'servico_id'=>'intereger',
-            'data_hora'=>'required|date',
+            'data_hora'=>'|date',
             'tipoPagamento' => '|max:20|min:3',
             'valor' => 'decimal:2'
         
@@ -45,11 +45,10 @@ class AgendaFormRequest extends FormRequest
     // Todas as mensagens das validações que serão exibidas caso o campo não seje preenchido de maneira correta
     public function messages(){
         return [
-            'profissional_id.required' => 'Profissional Obrigatório' ,
-          
+            
             'profissional_id.exists' => 'Profissional sem esse horário disponível' ,
             
-            'data_hora.required' => 'O data é obrigatória' ,
+           
 
             'data_hora.date' => 'O campo aceita data somente',
            

@@ -37,7 +37,7 @@ class ClienteUpdateFormRequest extends FormRequest
             'rua'=>'max:120',
             'numero'=>'max:10',
             'bairro'=>'max:100',
-            'cep'=>'max:8|min:8',
+            'cep'=>'max:9|min:8',
             'complemento'=>'max:150',
             'senha' => ''
         ];
