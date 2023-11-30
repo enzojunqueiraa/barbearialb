@@ -98,3 +98,5 @@ Route::delete('agenda/delete/{id}', [AgendaController::class, 'excluir']);
 Route::put('/agenda/update', [AgendaController::class, 'update']);
 
 Route::get('agenda/all', [AgendaController::class, 'retornarTodos']);
+
+Route::post('agenda/find/data/', [AgendaController::class, 'pesquisarPorDataDoProfissional']);
