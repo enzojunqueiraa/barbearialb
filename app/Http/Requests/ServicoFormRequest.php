@@ -45,6 +45,7 @@ class ServicoFormRequest extends FormRequest
         return [
             'nome.required' => 'Nome obrigatório',
             'nome.max' => 'Nome deve conter no máximo 80 caracteres',
+            'nome.min' => 'Nome deve conter no mínimo 5 caracteres',
             'nome.unique' => 'Nome já cadastrado no sistema',
             'nome.unique' => 'Nome deve conter no mínimo 5 caracteres',
             'descricao.required' => 'Descrição obrigatório',
