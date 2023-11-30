@@ -62,6 +62,8 @@ Route::put('cliente/update', [ClienteController::class, 'update']);
 
 Route::get('cliente/{id}', [ClienteController::class, 'pesquisarPorId']);
 
+Route::post('cliente/atualizar/senha', [ClienteController::class, 'esqueciMinhaSenha']);
+
 
 
     // Rotas da página Profissional
@@ -82,6 +84,8 @@ Route::get('profissional/all', [ProfissionalController::class, 'retornarTodos'])
 Route::put('profissional/update', [ProfissionalController::class, 'update']);
 
 Route::get('profissional/{id}', [ProfissionalController::class, 'pesquisarPorId']);
+
+Route::post('profissional/atualizar/senha', [ProfissionalController::class, 'esqueciMinhaSenha']);
 
 
 
