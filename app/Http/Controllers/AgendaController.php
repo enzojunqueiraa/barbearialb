@@ -54,27 +54,52 @@ class AgendaController extends Controller
 
     public function update(AgendaUpdateFormRequest $request)
     {
-        $agenda = Agenda::find($request->id);
-        if(!isset($agenda)){
-        return response()->json([
-            'status' => false,
-            'message' => 'Agendamento não encontrado'
-        ]);
+        $agendaProfissional = Agenda::where('data_hora', '=', $request->data_hora)->where('profissional_id', '=', $request->profissional_id)->get();
+
+        if (count($agendaProfissional) > 0) {
+            return response()->json([
+                "status" => false,
+                "message" => "Horario ja cadastrado",
+                "data" => $agendaProfissional
+            ], 200);
+        } else {
+
+            $agenda = Agenda::find($request->id);
+
+            if (!isset($agenda)) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Não há resultados para a Agenda'
+                ]);
+            }
+            if (isset($request->profissional_id)) {
+                $agenda->profissional_id = $request->profissional_id;
+            }
+            if (isset($request->cliente)) {
+                $agenda->cliente = $request->cliente;
+            }
+            if (isset($request->servico)) {
+                $agenda->servico = $request->servico;
+            }
+            if (isset($request->data_hora)) {
+                $agenda->data_hora = $request->data_hora;
+            }
+            if (isset($request->tipoPagamento)) {
+                $agenda->tipoPagamento = $request->tipoPagamento;
+            }
+            if (isset($request->valor)) {
+                $agenda->valor = $request->valor;
+            }
+            $agenda->update();
+            return response()->json([
+                'status' => true,
+                'message' => 'Agenda atualizada com sucesso'
+            ]);
+        }
     }
 
-        if (isset($request->profissional_id)) {
-            $agenda->profissional_id = $request->profissional_id;
-        }
-        if (isset($request->data)) {
-            $agenda->data_hora = $request->data_hora;
-        }
-        $agenda->update();
 
-        return response()->json([
-            'status' => true,
-            'message' => 'Agenda atualizado'
-        ]);
-    }
+
 
     public function retornarTodos()
     {
