@@ -71,7 +71,7 @@ Route::post('/profissional', [ProfissionalController::class, 'profissional']);
 
 Route::get('profissional/celular', [ProfissionalController::class, 'pesquisarPorCelular']);
 
-Route::get('profissional/nome', [ProfissionalController::class, 'pesquisarPorNome']);
+Route::post('profissional/nome', [ProfissionalController::class, 'pesquisarPorNome']);
 
 Route::get('profissional/cpf', [ProfissionalController::class, 'pesquisarPorCpf']);
 
@@ -100,3 +100,9 @@ Route::put('agenda/update', [AgendaController::class, 'update']);
 Route::get('agenda/all', [AgendaController::class, 'retornarTodos']);
 
 Route::post('agenda/find/data/', [AgendaController::class, 'pesquisarPorDataDoProfissional']);
+
+Route::put('atualizar/horarios', [AgendaController::class,'updateHorarios']);
+
+Route::get('agenda/find/horario/{id}', [AgendaController::class, 'pesquisarPorIdAgenda']);
+
+Route::get('horarios/profissionais', [AgendaController::class, 'retornarTodos']);

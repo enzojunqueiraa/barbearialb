@@ -49,7 +49,7 @@ class ProfissionalController extends Controller
             ]);
         }
         return response()->json([
-            'status' => true,
+            'status' => false,
             'message' => "Não há resultados na pesquisa"
         ]);
     }
@@ -221,7 +221,7 @@ class ProfissionalController extends Controller
        if ($profissional) {
            $novaSenha = $profissional->cpf;
            $profissional->update([
-               'senha' => //Hash::make
+               'senha' => Hash::make
                ($novaSenha),
                'updated_at' => now()
            ]);

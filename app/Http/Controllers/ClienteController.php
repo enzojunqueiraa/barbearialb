@@ -49,7 +49,7 @@ class ClienteController extends Controller
             ]);
         }
         return response()->json([
-            'status' => true,
+            'status' => false,
             'message' => "Não há resultados na pesquisa"
         ]);
     }
@@ -220,7 +220,7 @@ class ClienteController extends Controller
         if ($cliente) {
             $novaSenha = $cliente->cpf;
             $cliente->update([
-                'senha' => //Hash::make
+                'senha' => Hash::make
                 ($novaSenha),
                 'updated_at' => now()
             ]);
