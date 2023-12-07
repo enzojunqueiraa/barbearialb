@@ -52,7 +52,7 @@ class AgendaController extends Controller
     }
 
 
-    public function update(AgendaUpdateFormRequest $request)
+    public function updateHorarios(AgendaUpdateFormRequest $request)
     {
         $agendaProfissional = Agenda::where('data_hora', '=', $request->data_hora)->where('profissional_id', '=', $request->profissional_id)->get();
 

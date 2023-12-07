@@ -32,33 +32,37 @@ class ServicoController extends Controller
     {
         $barbearialb = Servico::find($id);
         if ($barbearialb == null) {
-           return response()->json([
-               'status' => false,
-               'message' => "Usuário não encontrado"
+           
+               return response()->json([
+                'status' => true,
+                'data' => $barbearialb
            ]);
        }
        return response()->json([
-           'status' => true,
-           'data' => $barbearialb
+        'status' => false,
+        'message' => "Usuário não encontrado"
        ]);
     }
 
     // Função de pesquisa por Nome
     public function pesquisarPorNome(Request $request)
-    {   
+    {
         $barbearialb = Servico::where('nome', 'like', '%' . $request->nome . '%')->get();
-        if(count($barbearialb) > 0){
+        if (count($barbearialb) > 0) {
+            return response()->json([
+                'status' => true,
+                'data' => $barbearialb
+            ]);
+        }
         return response()->json([
-            'status' => true,
-            'data' => $barbearialb
+            'status' => false,
+            'message' => "Não há resultados na pesquisa"
         ]);
     }
-    return response()->json([
-        'status' => true ,
-        'message' => "Não há resultados na pesquisa"
-    ]);
-    }
 
+
+
+    
     public function pesquisarPorCpf(Request $request)
     {   
         $barbearialb = Servico::where('cpf', 'like', '%' . $request->cpf . '%')->get();
@@ -69,7 +73,7 @@ class ServicoController extends Controller
         ]);
     }
     return response()->json([
-        'status' => true ,
+        'status' => false ,
         'message' => "Não há resultados na pesquisa"
     ]);
     }
@@ -90,7 +94,7 @@ class ServicoController extends Controller
             'message' => "Servico não encontrado"
         ]);
     }
-    }
+    
 
 
     // Função para excluir os serviços
@@ -156,5 +160,5 @@ class ServicoController extends Controller
             'data' => $barbearialb
         ]);
     }
-}
 
+}

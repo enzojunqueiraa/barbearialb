@@ -28,7 +28,7 @@ Route::post('/servico', [ServicoController::class, 'barbearialb']);
 
 Route::get('descricao', [ServicoController::class, 'pesquisarPorDescricao']);
 
-Route::get('servico/nome', [ServicoController::class, 'pesquisarPorNome']);
+Route::post('servico/nome', [ServicoController::class, 'pesquisarPorNome']);
 
 Route::delete('delete/{id}', [ServicoController::class, 'excluir']);
 
@@ -95,7 +95,7 @@ Route::post('/agenda', [AgendaController::class,'agenda']);
 
 Route::delete('agenda/delete/{id}', [AgendaController::class, 'excluir']);
 
-Route::put('agenda/update', [AgendaController::class, 'update']);
+Route::put('agenda/update/{id}', [AgendaController::class, 'updateHorarios']);
 
 Route::get('agenda/all', [AgendaController::class, 'retornarTodos']);
 
