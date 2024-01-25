@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\PagamentoController;
 use App\Http\Controllers\ProfissionalController;
 use App\Http\Controllers\ServicoController;
 use Illuminate\Http\Request;
@@ -106,3 +107,12 @@ Route::put('atualizar/horarios', [AgendaController::class,'updateHorarios']);
 Route::get('agenda/find/horario/{id}', [AgendaController::class, 'pesquisarPorIdAgenda']);
 
 Route::get('horarios/profissionais', [AgendaController::class, 'retornarTodos']);
+
+
+//Rota das Formas de Pagamento
+
+Route::post('formaPagamento/criar', [PagamentoController::class, 'tipoPagamento']);
+
+Route::delete('formaPagamento/delete/{id}', [PagamentoController::class, 'excluirPagamento']);
+
+Route::put('formaPagamento/update/{id}', [PagamentoController::class, 'updatePagamento']);
